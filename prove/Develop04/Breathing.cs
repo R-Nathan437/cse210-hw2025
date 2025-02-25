@@ -2,15 +2,20 @@ using System.Numerics;
 
 public class Breathing: Activity
 {
+    /// <summary>
+    /// breathing activity should help the user breath by counting their breath with them in real time.
+    /// </summary>
+    /// constuctor for breathing activity, uses the base activity constructor and sets some of the variables used in the parent class
     public Breathing() : base()
     {
         SetActivityName("Breathing Activity");
         SetActivityDescription("Helps you breathe");
     }
+    //since the get userlength function is called after the start message the length has been set, accept if valid, run for a minimum of 10 seconds. Round up to the nearest 10 for all positive integers.
     public void DisplayBreathControl()
     {
         int time;
-        if (Getlength() < 10)
+        if (_length < 10)
         {
             Console.WriteLine("This activity takes a minimun of 10 seconds");
             time = 10;
@@ -20,11 +25,11 @@ public class Breathing: Activity
         else
         {
             Console.WriteLine("This activity runs in intervals of 10 seconds, rounding to the nearest 10.");
-            time = (int)Math.Round(Getlength() / 10.0) * 10;
+            time = (int)Math.Round(_length / 10.0) * 10; //round to the nearest 10
             Console.WriteLine(time);
             SetLength(time);
         }
-        for (int i = 0; i < time/10; i++)
+        for (int i = 0; i < time/10; i++) //one breath cylce every 10 seconds
         {
             Console.WriteLine("Breathe in for 3 seconds");
             CountUp();
@@ -38,33 +43,33 @@ public class Breathing: Activity
     {
         for (int i = 1; i <= 3; i++)
         {
-        Console.Write(i);
-        Thread.Sleep(1000);
-        Console.Write("\b\b");
+        Console.Write(i);//1->3
+        Thread.Sleep(1000);//one second wait (the rest of method takes a negligible amount of added time)
+        Console.Write("\b\b");//remove last count from screen
         }
     }public void CountDown()
     {
         for (int i = 3; i > 0; i--)
         {
-        Console.Write(i);
-        Thread.Sleep(1000);
-        Console.Write("\b\b");
+        Console.Write(i);//3->1
+        Thread.Sleep(1000);//one second
+        Console.Write("\b\b");//remove last count from screen
         }
     }
     public void Hold()
     {
         for (int i = 4; i > 0; i-- )
         {
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.Write(i);//1-4
+            Thread.Sleep(1000);//one second
+            Console.Write("\b \b");//remove last count from screen
         }
     }
 
     public void RunBreathing()
     {
-        RunStart();
-        DisplayBreathControl();
-        DisplayEnd();
+        RunStart();//start message, set length and get ready
+        DisplayBreathControl();//run the activity
+        DisplayEnd();//display the end
     }
 }
