@@ -32,33 +32,34 @@ public class Breathing: Activity
         for (int i = 0; i < time/10; i++) //one breath cylce every 10 seconds
         {
             Console.WriteLine("Breathe in for 3 seconds");
-            CountUp();
+            CountUp(3);
             Console.WriteLine("Hold your breath for 4 seconds");
-            Hold();
+            Hold(4);
             Console.WriteLine("Breathe out for 3 seconds");
-            CountDown();
+            CountDown(3);
         } 
     }
-    public void CountUp()
+    public void CountUp(int timer)
     {
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i <= timer; i++)
         {
             Console.Write(i);//1->3
             Thread.Sleep(1000);//one second wait (the rest of method takes a negligible amount of added time)
             Console.Write("\b\b");//remove last count from screen
         }
-    }public void CountDown()
+    }
+    public void CountDown(int timer)
     {
-        for (int i = 3; i > 0; i--)
+        for (int i = timer; i > 0; i--)
         {
             Console.Write(i);//3->1
             Thread.Sleep(1000);//one second
             Console.Write("\b\b");//remove last count from screen
         }
     }
-    public void Hold()
+    public void Hold(int timer)
     {
-        for (int i = 4; i > 0; i-- )
+        for (int i = timer; i > 0; i-- )
         {
             Console.Write(i);//1-4
             Thread.Sleep(1000);//one second
