@@ -43,17 +43,17 @@ public class Breathing: Activity
     {
         for (int i = 1; i <= 3; i++)
         {
-        Console.Write(i);//1->3
-        Thread.Sleep(1000);//one second wait (the rest of method takes a negligible amount of added time)
-        Console.Write("\b\b");//remove last count from screen
+            Console.Write(i);//1->3
+            Thread.Sleep(1000);//one second wait (the rest of method takes a negligible amount of added time)
+            Console.Write("\b\b");//remove last count from screen
         }
     }public void CountDown()
     {
         for (int i = 3; i > 0; i--)
         {
-        Console.Write(i);//3->1
-        Thread.Sleep(1000);//one second
-        Console.Write("\b\b");//remove last count from screen
+            Console.Write(i);//3->1
+            Thread.Sleep(1000);//one second
+            Console.Write("\b\b");//remove last count from screen
         }
     }
     public void Hold()
