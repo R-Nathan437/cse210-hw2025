@@ -12,21 +12,17 @@ public class Reference
     _book = book;
     _chapter = chapter;
     _start = start;
-    if (string.IsNullOrEmpty(end))
-    {
-      _end = end;
-    }
-   else
-   {
-      _end = start;
-   }
+    _end = end;
 
  }
- public Reference(string book, string chapter, string verse)
+ public Reference(string book, string chapter, string start)
  {
-
+  _book = book;
+  _chapter = chapter;
+  _start = start;
+  _end = start;
  }
- public string convertToString()
+ public string ConvertToString()
  {
     if (_start == _end)
     {
