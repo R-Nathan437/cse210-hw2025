@@ -96,7 +96,7 @@ public class GoalTracker
                     string description = parts[1];
                     int points = int.Parse(parts[2]);
                     bool status = bool.Parse(parts[4]);
-                    Simple simple = new Simple(title, description, points, type);
+                    Simple simple = new Simple(title, description, points);
                     simple.status = status;
                     loadGoals.Add(simple);
                 }
@@ -107,7 +107,7 @@ public class GoalTracker
                     int points = int.Parse(parts[2]);
                     bool status = bool.Parse(parts[4]);
                     int timesCompleted = int.Parse(parts[5]);
-                    Eternal eternal = new Eternal(title, description, points, type);
+                    Eternal eternal = new Eternal(title, description, points);
                     eternal.status = status;
                     eternal.timesCompleted = timesCompleted;
                     loadGoals.Add(eternal);
@@ -122,7 +122,7 @@ public class GoalTracker
                     bool bonusStatus = bool.Parse(parts[6]);
                     int steps = int.Parse(parts[7]);
                     int progress = int.Parse(parts[8]);
-                    Checklist checklist = new Checklist(title, description, points, type, bonusPoints, steps);
+                    Checklist checklist = new Checklist(title, description, points, bonusPoints, steps);
                     checklist.status = status;
                     checklist.bonusStatus = bonusStatus;
                     checklist.progress = progress;

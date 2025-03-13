@@ -8,7 +8,7 @@ class Program
     {
         GoalTracker goalTracker = new GoalTracker();
 
-        Simple s1 = new Simple("goal 2", "second goal (simple)", 23, "simple");
+        Simple s1 = new Simple("goal 2", "second goal (simple)", 23);
         goalTracker.AddGoal(s1);
 
 
@@ -42,12 +42,11 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("How many points is your goal worth for completing once? ");
                         int points = int.Parse(Console.ReadLine());
-                        string type = "checklist";
                         Console.WriteLine("How many times do you need to complete this: ");
                         int steps = int.Parse(Console.ReadLine());
                         Console.WriteLine("How many bonus points do you get for completeing entire goal: ");
                         int bonusPoints = int.Parse(Console.ReadLine()); 
-                        Checklist checklist = new Checklist(title, description, points, type, bonusPoints, steps);
+                        Checklist checklist = new Checklist(title, description, points, bonusPoints, steps);
                         goalTracker.AddGoal(checklist);
                         _response = false;
                     }
@@ -59,8 +58,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("How many points is your goal worth? ");
                         int points = int.Parse(Console.ReadLine());
-                        string type = "eternal";
-                        Eternal eternal = new Eternal(title, description, points, type);
+                        Eternal eternal = new Eternal(title, description, points);
                         goalTracker.AddGoal(eternal);
                         _response = false;
                     }
@@ -72,8 +70,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("How many points is your goal worth? ");
                         int points = int.Parse(Console.ReadLine());
-                        string type = "eternal";
-                        Simple simple = new Simple(title, description, points, type);
+                        Simple simple = new Simple(title, description, points);
                         goalTracker.AddGoal(simple);
                         _response = false;
                     }

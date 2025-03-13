@@ -6,7 +6,7 @@ public class Eternal : Goal
         get{return _timesCompleted;}
         set{_timesCompleted = value;}
     }
-    public Eternal(string title, string description, int points, string type) : base(title, description, points, type)
+    public Eternal(string title, string description, int points) : base(title, description, points)
     {
         _timesCompleted = 0;
     }
@@ -25,7 +25,7 @@ public class Eternal : Goal
     }
     public override string Save()
      {
-        return $"{_title},{_description},{_goalPoints},{_type},{_status},{_timesCompleted}";
+        return $"{_title},{_description},{_goalPoints},eternal,{_status},{_timesCompleted}";
     }
 
 }

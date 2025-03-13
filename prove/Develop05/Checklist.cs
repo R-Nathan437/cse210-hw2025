@@ -24,7 +24,7 @@ public class Checklist : Goal
         get{return _progress;}
         set{_progress = value;}
     }
-    public Checklist(string title, string description, int points, string type, int bonus, int steps) : base(title, description, points, type)
+    public Checklist(string title, string description, int points, int bonus, int steps) : base(title, description, points)
     {
         _bonusPoints = bonus;
         _steps = steps;
@@ -62,7 +62,7 @@ public class Checklist : Goal
     }
     public override string Save()
     {
-        return $"{_title},{_description},{_goalPoints},{_type},{_status},{_bonusPoints},{_bonusStatus},{_steps},{_progress}";
+        return $"{_title},{_description},{_goalPoints}, checklist,{_status},{_bonusPoints},{_bonusStatus},{_steps},{_progress}";
     }
 
 }

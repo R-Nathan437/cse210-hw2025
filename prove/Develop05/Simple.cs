@@ -2,7 +2,7 @@ using System.Diagnostics.Contracts;
 
 public class Simple : Goal
 {
-    public Simple(string name, string description, int points, string type) : base(name, description, points, type)
+    public Simple(string name, string description, int points) : base(name, description, points)
     {
         
     }
@@ -30,7 +30,7 @@ public class Simple : Goal
     }
     public override string Save()
      {
-        return $"{_title},{_description},{_goalPoints},{_type},{_status}";
+        return $"{_title},{_description},{_goalPoints}, simple,{_status}";
     }
 
 

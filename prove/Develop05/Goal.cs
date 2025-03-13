@@ -23,12 +23,7 @@ public abstract class Goal
         get{return _goalPoints;}
         set{_goalPoints = value;}
     }
-    protected string _type;
-    public string type
-    {
-        get{return _type;}
-        set{_type = value;}
-    }
+    
     protected bool _status;
     public bool status
     {
@@ -40,17 +35,15 @@ public abstract class Goal
             _title = "";
             _description = "";
             _goalPoints = 0;
-            _type = "";
              _status = false;
         }
     
 
-    public Goal(string title, string description, int points, string type)
+    public Goal(string title, string description, int points)
     {
         _title = title;
         _description = description;
         _goalPoints = points;
-        _type = type;
         _status = false;
     }
     public virtual void creatOutline(string Type)
