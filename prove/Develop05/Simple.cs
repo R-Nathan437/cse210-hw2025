@@ -10,15 +10,15 @@ public class Simple : Goal
     
     public override void RecordGoal()
     {
-        _status = true;
+        status = true;
     }
     public override int AddPoints()
     {
-        return _goalPoints;
+        return goalPoints;
     }
     public override void DisplayGoal()
     {
-        Console.Write($"{_title}\n{_description} || {_goalPoints}points ||");
+        Console.Write($"{title}\n{description} || {goalPoints}points ||");
         if (IsComplete())
         {
             Console.WriteLine("[X]\n");
@@ -30,11 +30,7 @@ public class Simple : Goal
     }
     public override string Save()
      {
-        return $"{_title},{_description},{_goalPoints}, simple,{_status}";
+        return $"{title},{description},{goalPoints}, simple, {status}";
     }
-
-
-
-
 
 }

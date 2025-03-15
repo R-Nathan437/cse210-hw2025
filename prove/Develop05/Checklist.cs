@@ -1,3 +1,5 @@
+using System.Dynamic;
+
 public class Checklist : Goal
 {
     private int _bonusPoints;
@@ -24,45 +26,45 @@ public class Checklist : Goal
         get{return _progress;}
         set{_progress = value;}
     }
-    public Checklist(string title, string description, int points, int bonus, int steps) : base(title, description, points)
+    public Checklist(string title, string description, int points, int bonus, int uSteps) : base(title, description, points)
     {
-        _bonusPoints = bonus;
-        _steps = steps;
-        _progress = 0;
-        _bonusStatus = false;
+        bonusPoints = bonus;
+        steps = uSteps;
+        progress = 0;
+        bonusStatus = false;
     }
      public override void RecordGoal()
     {
-        _progress++;
-        if (_progress >= _steps)
+        progress++;
+        if (progress >= steps)
         {
-            _bonusStatus = true;
+            bonusStatus = true;
         }
         else
         {
-            _bonusStatus = false;
+            bonusStatus = false;
         }
-        _status = true;
+        status = true;
     }
     public override int AddPoints()
     {
         
-        if (_bonusStatus)
+        if (bonusStatus)
         {
-            return (_goalPoints * _progress) + _bonusPoints;
+            return (goalPoints * progress) + bonusPoints;
         }
         else
         {
-            return _goalPoints * _progress;
+            return goalPoints * progress;
         }
     }
     public override void DisplayGoal()
     {
-        Console.WriteLine($"{_title}\n{_description} || {_goalPoints}points || [{_progress}/{_steps}]\n");
+        Console.WriteLine($"{title}\n{description} || {goalPoints}points || [{progress}/{steps}]\n");
     }
     public override string Save()
     {
-        return $"{_title},{_description},{_goalPoints}, checklist,{_status},{_bonusPoints},{_bonusStatus},{_steps},{_progress}";
+        return $"{title},{description},{goalPoints}, checklist,{status},{bonusPoints},{bonusStatus},{steps},{progress}";
     }
 
 }

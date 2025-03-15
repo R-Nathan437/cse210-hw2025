@@ -8,24 +8,24 @@ public class Eternal : Goal
     }
     public Eternal(string title, string description, int points) : base(title, description, points)
     {
-        _timesCompleted = 0;
+        timesCompleted = 0;
     }
     public override void RecordGoal()
     {
-        _status = true;
-        _timesCompleted++;
+        status = true;
+        timesCompleted++;
     }
     public override int AddPoints()
     {
-        return _goalPoints * _timesCompleted;
+        return goalPoints * timesCompleted;
     }
     public override void DisplayGoal()
     {
-        Console.WriteLine($"{_title}\n{_description} || {_goalPoints}points ||  [ ] {_timesCompleted}\n");
+        Console.WriteLine($"{title}\n{description} || {goalPoints}points ||  [ ] {timesCompleted}\n");
     }
     public override string Save()
      {
-        return $"{_title},{_description},{_goalPoints},eternal,{_status},{_timesCompleted}";
+        return $"{title},{description},{goalPoints},eternal,{status},{timesCompleted}";
     }
 
 }

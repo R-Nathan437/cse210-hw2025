@@ -15,7 +15,7 @@ public abstract class Goal
     public string description
     {
         get{return _description;}
-        set{description = value;}
+        set{_description = value;}
     }
     protected int _goalPoints;
     public int goalPoints
@@ -32,34 +32,34 @@ public abstract class Goal
     }
     public Goal()
         {
-            _title = "";
-            _description = "";
-            _goalPoints = 0;
-             _status = false;
+            title = "";
+            description = "";
+            goalPoints = 0;
+            status = false;
         }
     
 
-    public Goal(string title, string description, int points)
+    public Goal(string uTitle, string uDescription, int points)
     {
-        _title = title;
-        _description = description;
-        _goalPoints = points;
-        _status = false;
+        title = uTitle;
+        description = uDescription;
+        goalPoints = points;
+        status = false;
     }
     public virtual void creatOutline(string Type)
     {
         Console.Write("Goal name: ");
-        _title = Console.ReadLine();
+        title = Console.ReadLine();
         Console.Write("Goal description:");
-        _description = Console.ReadLine();
+        description = Console.ReadLine();
         Console.Write("Points: ");
-        string stringPoints = (Console.ReadLine());
+        string stringPoints = Console.ReadLine();
         bool incorrect = true;
         while(incorrect)
         {
             if (int.TryParse(stringPoints, out int points))
             {
-                _goalPoints = points;
+                goalPoints = points;
                 incorrect = false;
             }
             else
@@ -74,7 +74,7 @@ public abstract class Goal
     public abstract void RecordGoal();
     public virtual bool IsComplete()
     {
-        return _status;
+        return status;
     }
     public abstract string Save();
     
