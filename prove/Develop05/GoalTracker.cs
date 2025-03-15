@@ -1,3 +1,4 @@
+using System.IO;
 public class GoalTracker
 {
     private List<Goal> _goals = new List<Goal>();
@@ -9,7 +10,7 @@ public class GoalTracker
     protected int _collectedPoints = 0;
     public void AddGoal(Goal goal)
     {
-        goals.Add(goal);
+        _goals.Add(goal);
     }
     public void DisplayGoalList()
     {
@@ -80,32 +81,28 @@ public class GoalTracker
         }
 
     }
-    public void LoadGoals(string loadfilename)
+    public void LoadGoals(string filename)
     {
         List<Goal> loadGoals = new List<Goal>();
-        if (loadfilename.EndsWith(".csv"))
+        if (filename.EndsWith(".csv"))
         {
-            string[] lines = System.IO.File.ReadAllLines(loadfilename);
+            string[] lines = System.IO.File.ReadAllLines(filename);
             foreach (string line in lines)
             {
                 string[] parts = line.Split(",");
                 string type = parts[3].ToLower();
+                string title = parts[0];
+                string description = parts[1];
+                int points = int.Parse(parts[2]);
+                bool status = bool.Parse(parts[4]);
                 if (type == "simple")
                 {
-                    string title = parts[0];
-                    string description = parts[1];
-                    int points = int.Parse(parts[2]);
-                    bool status = bool.Parse(parts[4]);
                     Simple simple = new Simple(title, description, points);
                     simple.status = status;
                     loadGoals.Add(simple);
                 }
                 else if (type == "eternal")
                 {
-                    string title = parts[0];
-                    string description = parts[1];
-                    int points = int.Parse(parts[2]);
-                    bool status = bool.Parse(parts[4]);
                     int timesCompleted = int.Parse(parts[5]);
                     Eternal eternal = new Eternal(title, description, points);
                     eternal.status = status;
@@ -113,11 +110,7 @@ public class GoalTracker
                     loadGoals.Add(eternal);
                 }
                 else if (type == "checklist")
-                {
-                    string title = parts[0];
-                    string description = parts[1];
-                    int points = int.Parse(parts[2]);
-                    bool status = bool.Parse(parts[4]);
+                {                    
                     int bonusPoints = int.Parse(parts[5]);
                     bool bonusStatus = bool.Parse(parts[6]);
                     int steps = int.Parse(parts[7]);
